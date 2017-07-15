@@ -7,6 +7,7 @@
 #include<string>
 #include <cctype>
 using namespace std;
+int sCount = 0;
 int wCount = 0;
 void tokenize(string st);
 int main(/*char *argv[]*/)
@@ -18,9 +19,7 @@ int main(/*char *argv[]*/)
 	{
 		while (getline(myfile, line))
 		{
-			//cout << line << '\n';
-			//cout << "-*55685464564654564564" << endl;
-			
+			//cout << line<<endl;
 			tokenize(line);
 		}
 		myfile.close();
@@ -37,12 +36,47 @@ void tokenize(string st) {
 	//cout << st << endl;
 	cout <<endl <<st.size()<<endl;
 	string word="";
-	for (long long i = 0;i < st.size()-1;i++) {
-		//cout << st.at(i);
-		char c = (char)st.at(i);
-		//if (c == ' ') {
-			cout << c;
-		//}
+	string snt = "";
+	//running a loop where each char of st will be assigned to c
+	for (int idx = 0; idx < (int)st.size();idx++) {
+		cout << st.at(idx);
+		char c=' ';
+		int x = (int)st.at(idx);
+		if (x < 32 || x>125) {
+			c = (char)33;
+		}
+		else{
+			c = st.at(idx);
+		}
+		
+		//get rid of punctuation
+		/*if (!ispunct(c))
+		{
+			//making all lower case
+			if ((int)c >= 65 && (int)c <= 90) {
+				c = tolower(c);
+			}
+			//get rid of space
+			if (!isspace(c)) {
+				//put chars into the word
+				word += c;
+			}
+			else {
+				//increasing word count
+				wCount++;
+				cout << "Word # " << wCount << " : ";
+				cout << word << endl;
+				//got our word ready!
+				
+				//clearing the word variable to store the next one
+				word = "";
+			}
+
+		}//else if()
+		
+		*/
 	}
+		
+	
 	
 }
