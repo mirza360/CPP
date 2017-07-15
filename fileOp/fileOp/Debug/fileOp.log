@@ -1,13 +1,4 @@
-﻿  Node.cpp
-c:\users\mirza\documents\github\cpp\fileop\fileop\node.h(12): error C2011: 'Node': 'struct' type redefinition
-  c:\users\mirza\documents\github\cpp\fileop\fileop\node.h(5): note: see declaration of 'Node'
-c:\users\mirza\documents\github\cpp\fileop\fileop\node.cpp(7): error C2027: use of undefined type 'Node'
-  c:\users\mirza\documents\github\cpp\fileop\fileop\node.h(5): note: see declaration of 'Node'
-c:\users\mirza\documents\github\cpp\fileop\fileop\node.cpp(7): error C2059: syntax error: ')'
-c:\users\mirza\documents\github\cpp\fileop\fileop\node.cpp(8): error C2143: syntax error: missing ';' before '{'
-c:\users\mirza\documents\github\cpp\fileop\fileop\node.cpp(8): error C2447: '{': missing function header (old-style formal list?)
-c:\users\mirza\documents\github\cpp\fileop\fileop\node.cpp(12): error C2027: use of undefined type 'Node'
-  c:\users\mirza\documents\github\cpp\fileop\fileop\node.h(5): note: see declaration of 'Node'
-c:\users\mirza\documents\github\cpp\fileop\fileop\node.cpp(12): error C2059: syntax error: ')'
-c:\users\mirza\documents\github\cpp\fileop\fileop\node.cpp(13): error C2143: syntax error: missing ';' before '{'
-c:\users\mirza\documents\github\cpp\fileop\fileop\node.cpp(13): error C2447: '{': missing function header (old-style formal list?)
+﻿  fileOp.cpp
+c:\users\mirza\documents\github\cpp\fileop\fileop\fileop.cpp(42): warning C4244: 'argument': conversion from '__int64' to 'unsigned int', possible loss of data
+  fileOp.vcxproj -> C:\Users\Mirza\Documents\GitHub\CPP\fileOp\Debug\fileOp.exe
+  fileOp.vcxproj -> C:\Users\Mirza\Documents\GitHub\CPP\fileOp\Debug\fileOp.pdb (Full PDB)
