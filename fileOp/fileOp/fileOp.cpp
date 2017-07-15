@@ -31,26 +31,17 @@ int main(/*char *argv[]*/)
 }
 
 void tokenize(string st) {
-	
+
 	//char spc = 32;
 	//cout << st << endl;
-	cout <<endl <<st.size()<<endl;
-	string word="";
+	cout << endl << st.size() << endl;
+	string word = "";
 	string snt = "";
 	//running a loop where each char of st will be assigned to c
-	for (int idx = 0; idx < (int)st.size();idx++) {
-		cout << st.at(idx);
-		char c=' ';
-		int x = (int)st.at(idx);
-		if (x < 32 || x>125) {
-			c = (char)33;
-		}
-		else{
-			c = st.at(idx);
-		}
-		
+	for (int idx = 0; idx < (int)st.size(); idx++) {
+		char c = st.at(idx);
 		//get rid of punctuation
-		/*if (!ispunct(c))
+		if (!ispunct(c))
 		{
 			//making all lower case
 			if ((int)c >= 65 && (int)c <= 90) {
@@ -60,23 +51,28 @@ void tokenize(string st) {
 			if (!isspace(c)) {
 				//put chars into the word
 				word += c;
+				//cout << word;
 			}
 			else {
 				//increasing word count
+				
 				wCount++;
 				cout << "Word # " << wCount << " : ";
 				cout << word << endl;
-				//got our word ready!
-				
-				//clearing the word variable to store the next one
 				word = "";
+				//got our word ready!
+
+				//clearing the word variable to store the next one
+				//word = "";
 			}
+			
+			//word = "";
 
 		}//else if()
-		
-		*/
+
+
 	}
-		
-	
-	
+
+	//cout << snt;
+
 }
