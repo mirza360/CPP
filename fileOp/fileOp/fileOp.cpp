@@ -18,25 +18,20 @@ const int pNum = 1777;//the prime number
 
 struct Node {
 	//common op
-	string key;
-	int val;
+	string key="";
+	int val=-1;
 	Node *next = NULL;
-	Node *Lst = NULL;
 	//special for the first one
 	int total = 0;
 	bool begin = false;
 	Node *last = NULL;
 	//for the key occurence
-	int occ = 0;
-	bool recur = true;
+
 	Node *side = NULL;
 	int pos = -1;
 	//for active list
-	Node *actN = NULL;
 };
 //Structure related global variables
-Node *activeList = new Node();
-Node*actHead = activeList;
 Node *arr[pNum];
 
 //Functions area
@@ -58,7 +53,7 @@ int main(/*char *argv[]*/)
 			//cout << line<<endl;
 			tokenize(line);
 		}
-		print();
+		//print();
 		myfile.close();
 		
 	}
@@ -94,24 +89,20 @@ void tokenize(string st) {
 					wCount++;
 					
 					cout << "Word # " << wCount << " : ";
-					//cout << word << endl;
+					cout << word << endl;
 					insert(word);
 					word.erase();
 				}
 
 			}
 
-			//word = "";
-
-			//}/
-
+	
 
 		}
 		
 	}
 
-	//cout << snt;
-
+	
 }
 //insert operation
 void insert(string st) {
@@ -120,121 +111,70 @@ void insert(string st) {
 	for (int idx = 0; idx < (int)st.size(); idx++) {
 		res += (int)st.at(idx);
 	}
-	cout << res;
+	res = res%pNum;
+	cout << res<<endl;
 	//conversion to number ends
-	//Creating the node
-	Node *n = new Node();
-	n->key = st;
-	n->val = res;
-	n->pos = wCount;
-	n->next = NULL;
-	//insert
-	int arrPos = res%pNum;
-	if (arr[arrPos] == NULL) {
-		Node*act = new Node();
-		act->val = arrPos;
-		activeList = act;
-		activeList = activeList->actN;
-		arr[arrPos] = new Node();
-		arr[arrPos]->begin = true;
+	//--create the word node
+	Node *wrd = new Node();
+	wrd->key = st;
+	wrd->total++;
+	//-position side node
+	Node*pos = new Node();
+	pos->pos = wCount;
+	cout << pos->pos<<endl;
+	/*
+	wrd->side = pos;
+	wrd->last = pos;*/
+	//-end of position side node
+	//--end of word node
+	if (arr[res] == NULL) {
+		arr[res] = new Node();
 	}
-	if (arr[arrPos]->begin = true) {
-		Node *x = arr[arrPos]->next;//as we will be using the arr[arrPos] as head
-
-		if (x == NULL) {
-			x = n;
-			cout << x->key<<endl;
-		}
-		else {
-			while (x != NULL) {
-				//comparing if exists
-				if (x->key == n->key) {
-					x->total++;
-					x->recur = true;
-					x->side = new Node();
-					//checking for recurrence
-					if (x->side->begin == false) {
-						x->side->begin = true;
-						x->side->pos = n->pos;
-					}
-					else {
-						while (x->side->begin != false) {
-							cout << x->side->pos;
-							x->side = x->side->next;
-						}
-						x->side->begin = true;
-						x->side->pos = n->pos;
-						cout << x->side->pos;
-					}
-					break;
-				}
-				else {
-					x = x->next;
-				}
-				
-				cout << x->key << endl;
-			}
-			x = n;
-			cout << x->key << endl;
-		}
+	//if has table index empty
+	if(!arr[res]->begin){
+		arr[res]->begin = true;
+		arr[res]->next = wrd;
+		wrd->side = pos;
+		wrd->last = pos;
+		cout << "begin 1" << endl;
 		
-	}
-	
-}//insert ends here
-//brunch insert starts here
-/*
-void brunching(Node *br, Node *n) {
-	if (br == NULL) {
-		br = new Node();
-		br->begin = true;
-	}
-	int x = n->key.at(0);
-	if (br->brIdx[x]->begin == false) {
-		br->brIdx[x] = new Node();
-		br->brIdx[x]->begin = true;
-	}
-	Node *bx = br->brIdx[x]->next;
-	if (bx == NULL) {
-		bx = n;
-		bx->begin = true;
-		bx->total++;
-		
-	}
+	}//if table index already has something
 	else {
-		while (bx != NULL) {
-			if (bx->key == n->key) {
-
+		//checking for duplicate
+		Node *idx = arr[res]->next;
+		bool check = false;//if duplicate found, it will be true
+		while (idx != NULL) {
+			//matching the key
+			if (idx->key.compare(st)==0) {
+				//cout << idx->key;
+				cout << "begin 2" << endl;
+				idx->last->side = pos;
+				idx->total++;
+				idx->last = pos;
+				//delete (wrd);
+				check = true;
+				break;
+			}//if not matched
+			else {
+				idx = idx->next;
 			}
 		}
+		if (check == false) {
+			idx = wrd;
+			wrd->side = pos;
+			wrd->last = pos;
+		}
+		//debugging
+		Node *dx = arr[res]->next->side;
+		cout << arr[res]->next->total << endl;
+		while (dx != NULL) {
+			cout << dx->pos << ", ";
+			dx = dx->side;
+		}
+		//end of debugging
 	}
-	
-}//brunching ends here
-
-*/
+		
+}
 void print() {
-	Node *tmp = actHead;
-	/*if (actHead != NULL) {
-		while (tmp != NULL) {
-			int tVal = tmp->val;
-			//Now traverse throught the arr[tVal]
-			Node*x = arr[tVal]->next;
-			while (x != NULL) {
-				cout << "Word: " << x->key << " :";
-				if (x->total > 0) {
-					Node *y = x->side->next;
-					while (y != NULL) {
-						cout << y->val<<" ,";
-						y = y->next;
-					}
-				}
-			}
-			tmp = tmp->next;
-		}
-	}*/
-	for (int idx = 0; idx < pNum; idx++) {
-		if (arr[idx]->begin==true) {
-			tmp = arr[idx]->next;
-			cout << tmp->key;
-		}
-	}
+	
 }
