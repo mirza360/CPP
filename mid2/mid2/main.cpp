@@ -14,23 +14,26 @@ Node *root = NULL;
 Node* TreeInsert(Node*tree, int v);
 void print(Node*tree);
 int printOdds(Node *tree);
+int findWidth(Node *tree);
+//int greatNonNeg(Node *tree);
 int main()
 {
 	root = TreeInsert(root, 55);
-	root = TreeInsert(root, 11);
+	root = TreeInsert(root, 44);
 	root = TreeInsert(root, 22);
 	root = TreeInsert(root, 33);
-	root = TreeInsert(root, 44);
 	root = TreeInsert(root, 66);
 	root = TreeInsert(root, 77);
 	root = TreeInsert(root, 88);
 	root = TreeInsert(root, 99);
+	root = TreeInsert(root, 11);
 	print(root);
 	cout << endl;
 	//printOdds(root);
 	int x = 0;
 	x=printOdds(root);
-	cout << x;
+	cout << x<<endl;
+	cout << findWidth(root);
 
 	return 0;
 }
@@ -84,3 +87,59 @@ int printOdds(Node *tree) {
 	
 	
 }
+int findWidth(Node *tree) {
+	if (tree == NULL) {
+		return 0;
+	}
+	else {
+		int x = 0;
+		Node*tmp = tree;
+		while (tmp) {
+			x++;
+			tmp = tmp->left;
+			
+		}
+		tmp = tree;
+		while (tmp) {
+			x++;
+			tmp = tmp->right;
+			
+		}
+		return x;
+	}
+}
+/*
+int greatNonNeg(Node *tree) {
+	if (tree == NULL) {
+		return 0;
+	}
+	else {
+		int x = 0;
+		if (tree->value > 0) {
+			x = tree->value;
+		}
+		else {
+			Node*tmp = tree;
+			bool checker = false;
+			while (tmp) {
+
+				tmp = tmp->left;
+				if (tmp->value > 0) {
+					x = tmp->value;
+					break;
+				}
+				else {
+					Node *t2 = tmp;
+					while (t2) {
+						t2 = t2->right;
+						if (t2->value > 0) {
+							x = t2->value;
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+*/
