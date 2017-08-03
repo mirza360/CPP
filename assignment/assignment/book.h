@@ -21,7 +21,7 @@ struct Hash {
 };
 class book
 {
-	
+
 	/*
 	struct HashLink {
 	int value = -1;
@@ -40,8 +40,8 @@ public:
 	book();
 	void tokenize(string st);
 	void insert(string st);
-	void insertHash(string key,Hash *&array);
-	Word* wrdLink(Word* w);
+	void insertHash(string key,Word *&h);
+	void wrdLink(Word*& w,string key);
 	void print();
 
 
