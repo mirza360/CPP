@@ -33,6 +33,7 @@ struct Node {
 
 //Functions area
 string tokenize(string st);
+void Freq(string fileName);
 //void insert(string st);
 //void print();
 //void brunching(Node *br, Node *n);
@@ -40,13 +41,20 @@ Node *arr[pNum];
 //Main function
 int main()
 {
-	string line;
-	//string word="";
-	ifstream myfile;
+	
 	//cout << "Enter the .txt file name: ";
 	//string fileName;
 	//cin >> fileName;
-	myfile.open("file.txt");
+	//myfile.open("file.txt");
+	Freq("file.txt");
+	return 0;
+}
+//Function implementation
+void Freq(string filename) {
+	string line;
+	//string word="";
+	ifstream myfile;
+	myfile.open(filename);
 	if (myfile) {
 		while (myfile >> line) {
 			//cout << line << endl;
@@ -65,7 +73,7 @@ int main()
 			//--create the word node
 			Node *wrd = new Node();
 			wrd->key = st;
-			
+
 			wrd->total++;
 			//-position side node
 			//Node*pos = new Node();
@@ -97,9 +105,9 @@ int main()
 					}
 				}
 				if (check == false) {
-					idx = wrd;	
+					idx = wrd;
 				}
-				
+
 			}
 
 			//testing ends
@@ -128,9 +136,7 @@ int main()
 	else {
 		cout << "Unable to open";
 	}
-	return 0;
 }
-//Function implementation
 string tokenize(string st) {
 
 	//cout << endl << st.size() << endl;
