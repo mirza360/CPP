@@ -14,8 +14,8 @@ Node *arr[1777];
 vector<Node*>hs;
 //end of global variables
 using namespace std;
-Frequency::Frequency() {
-
+Frequency::Frequency(string st) {
+	FileOpen(st);
 }
 Frequency::~Frequency() {
 	for (int id = 0; id < 1777; id++) {
@@ -31,7 +31,7 @@ Frequency::~Frequency() {
 	
 	//delete(arr);
 }
-vector<Node*> Frequency::FileOpen(string fileName)
+void Frequency::FileOpen(string fileName)
 {
 	
 	//cout << "Enter the .txt file name: ";
@@ -42,7 +42,6 @@ vector<Node*> Frequency::FileOpen(string fileName)
 	/*for (int idx = 0; idx <(int) fr.size(); idx++) {
 		hs.push_back(fr[idx]);
 	}*/
-	return fr;
 }
 //Function implementation
 vector<Node*> Frequency::Freq(string filename) {
@@ -144,7 +143,7 @@ string Frequency::tokenize(string st) {
 	char c;
 	for (int idx = 0; idx < (int)st.size(); idx++) {
 		c = st.at(idx);
-		if (!ispunct(c) && isalpha(c)) {
+		if (!ispunct(c) && isalpha(c) && !isspace(c)) {
 			word += tolower(c);
 		}
 
@@ -166,4 +165,7 @@ void Frequency::printVector(vector<Node*>vct) {
 		}
 
 	}
+}
+Node* getVectorElements(int idx) {
+	return arr[idx]->next;
 }
