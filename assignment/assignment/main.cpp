@@ -20,6 +20,7 @@ struct Node {
 	Node *next = NULL;
 	//special for the first one
 	int total = 0;
+	float freq = 0.0;
 	bool begin = false;
 };
 //Structure related global variables
@@ -150,7 +151,9 @@ void printVector(vector<Node*>vct) {
 				float a = (float)(vct[idx]->next->total) / (float)(wCount);
 
 				cout << vct[idx]->next->key << " - ";
-				printf("%.4f: ", a);
+				//printf("%.4f: ", a);
+				vct[idx]->freq =  a;
+				cout << vct[idx]->freq;
 				//cout << "";
 				cout << endl;
 				vct[idx]->next = vct[idx]->next->next;
