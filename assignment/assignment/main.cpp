@@ -3,6 +3,7 @@
 #include<fstream>
 #include<string>
 #include <cctype>
+#include<vector>
 
 using namespace std;
 //global variable area
@@ -16,26 +17,19 @@ const int pNum = 1777;//the prime number
 struct Node {
 	//common op
 	string key = "";
-	int val = -1;
 	Node *next = NULL;
 	//special for the first one
 	int total = 0;
 	bool begin = false;
-	Node *last = NULL;
-	//for the key occurence
-
-	Node *side = NULL;
-	int pos = -1;
-	//for active list
 };
 //Structure related global variables
 
 
 //Functions area
 string tokenize(string st);
-void Freq(string fileName);
+vector<Node*> Freq(string fileName);
 //void insert(string st);
-//void print();
+void printVector(vector<Node*>vct);
 //void brunching(Node *br, Node *n);
 Node *arr[pNum];
 //Main function
@@ -46,11 +40,13 @@ int main()
 	//string fileName;
 	//cin >> fileName;
 	//myfile.open("file.txt");
-	Freq("file.txt");
+	vector<Node*>fr=Freq("file.txt");
 	return 0;
 }
 //Function implementation
-void Freq(string filename) {
+vector<Node*> Freq(string filename) {
+	//Node *arr[pNum];
+	vector<Node*>vct;
 	string line;
 	//string word="";
 	ifstream myfile;
@@ -113,29 +109,18 @@ void Freq(string filename) {
 			//testing ends
 		}
 		//print here
-		//cout << "Hello";
-		for (int idx = 0; idx < pNum; idx++) {
-			if (arr[idx]) {
-
-				while (arr[idx]->next) {
-					//cout << arr[idx]->next->total;
-					float a = (float)(arr[idx]->next->total) / (float)(wCount);
-
-					cout << arr[idx]->next->key << " - ";
-					printf("%.4f: ", a);
-					//cout << "";
-					cout << endl;
-					arr[idx]->next = arr[idx]->next->next;
-				}
-				//cout << "Hi";
-			}
-
+		
+		for (int i = 0; i < pNum; i++) {
+			vct.push_back(arr[i]);
 		}
+		printVector(vct);
 		//print ends
 	}
 	else {
 		cout << "Unable to open";
+		
 	}
+	return vct;
 }
 string tokenize(string st) {
 
@@ -155,4 +140,23 @@ string tokenize(string st) {
 	return word;
 
 
+}
+void printVector(vector<Node*>vct) {
+	for (int idx = 0; idx < pNum; idx++) {
+		if (vct[idx]) {
+
+			while (vct[idx]->next) {
+				//cout << arr[idx]->next->total;
+				float a = (float)(vct[idx]->next->total) / (float)(wCount);
+
+				cout << vct[idx]->next->key << " - ";
+				printf("%.4f: ", a);
+				//cout << "";
+				cout << endl;
+				vct[idx]->next = vct[idx]->next->next;
+			}
+			//cout << "Hi";
+		}
+
+	}
 }
