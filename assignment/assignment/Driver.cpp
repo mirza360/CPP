@@ -9,11 +9,12 @@
 using namespace std;
 int main() {
 	Frequency f;
-	//f.FileOpen("file.txt");
+	vector<Node*>fl=f.FileOpen("file.txt");
+
 	//f.~Frequency();
-	Frequency f2;
-	f2.FileOpen("file3.txt");
-	f2.~Frequency();
+	//Frequency f2;
+	//f2.FileOpen("file3.txt");
+	//f2.~Frequency();
 	
 
 	return 0;

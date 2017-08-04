@@ -31,7 +31,7 @@ Frequency::~Frequency() {
 	
 	//delete(arr);
 }
-void Frequency::FileOpen(string fileName)
+vector<Node*> Frequency::FileOpen(string fileName)
 {
 	
 	//cout << "Enter the .txt file name: ";
@@ -42,7 +42,7 @@ void Frequency::FileOpen(string fileName)
 	/*for (int idx = 0; idx <(int) fr.size(); idx++) {
 		hs.push_back(fr[idx]);
 	}*/
-	//return fr;
+	return fr;
 }
 //Function implementation
 vector<Node*> Frequency::Freq(string filename) {

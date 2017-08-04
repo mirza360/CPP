@@ -25,7 +25,7 @@ public:
 	//Functions
 	Frequency();
 	~Frequency();
-	void FileOpen(string filename);
+	vector<Node*> FileOpen(string filename);
 	string tokenize(string st);
 	vector<Node*> Freq(string fileName);
 	void printVector(vector<Node*>vct);
