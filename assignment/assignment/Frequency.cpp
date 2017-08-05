@@ -28,22 +28,19 @@ Frequency::~Frequency() {
 			delete(arr[id]);
 		}
 	}
-	
+
 	//delete(arr);
 }
 void Frequency::FileOpen(string fileName)
 {
-	
+
 	//cout << "Enter the .txt file name: ";
 	//string fileName;
 	//cin >> fileName;
 	//myfile.open("file.txt");
-	vector<Node*>fr=Freq(fileName);
-	//hs = fr;
-	//cout << "Hello" << endl;
-	//cout << hs[221]->next->value << endl;
+	vector<Node*>fr = Freq(fileName);
 	/*for (int idx = 0; idx <(int) fr.size(); idx++) {
-		hs.push_back(fr[idx]);
+	hs.push_back(fr[idx]);
 	}*/
 }
 //Function implementation
@@ -114,11 +111,11 @@ vector<Node*> Frequency::Freq(string filename) {
 			//testing ends
 		}
 		//print here
-		
+
 		for (int i = 0; i < pNum; i++) {
 			vct.push_back(arr[i]);
 			if (arr[i]) {
-				
+
 				float a = (float)(vct[i]->next->total) / (float)(wCount);
 				//printf("%.4f: ", a);
 				//a = a * 100000;
@@ -133,7 +130,7 @@ vector<Node*> Frequency::Freq(string filename) {
 	}
 	else {
 		cout << "Unable to open";
-		
+
 	}
 	return vct;
 }
@@ -157,84 +154,19 @@ string Frequency::tokenize(string st) {
 
 }
 void Frequency::printVector(vector<Node*>vct) {
-	Node* tmp = NULL;
 	for (int idx = 0; idx < pNum; idx++) {
 		if (vct[idx]) {
-			tmp = vct[idx]->next;
-			while (tmp) {
-				cout << tmp->key << " - " << vct[idx]->freq << endl;
-				tmp = tmp->next;
+
+			while (vct[idx]->next) {
+				cout << vct[idx]->next->key << " - " << vct[idx]->freq << endl;
+				vct[idx]->next = vct[idx]->next->next;
 			}
 			//cout << "Hi";
 		}
 
 	}
 }
-bool Frequency::hasArrayItem(int idx)
+Node * Frequency::getVectorElements(int idx)
 {
-	if (arr[idx]) {
-		return true;
-	}
-	else {
-		return false;
-	}
+	return arr[idx]->next;
 }
-
-Node * Frequency::returnArrayheader(int idx)
-{
-	return arr[idx];
-}
-void Frequency::copyVectorHeads(vector<Node*>& vct)
-{
-	for (int x = 0; x < pNum; x++) {
-		if (arr[x]) {
-			vct[x] = new Node();
-			vct[x]->begin = arr[x]->begin;
-			vct[x]->freq = arr[x]->freq;
-			//vct[x]->next = arr[x]->next;
-			vct[x]->value = arr[x]->value;
-			
-		}
-	}
-}
-
-//vector<Node*> Frequency::getMasterVector()
-//{
-//	vector<Node*>master(pNum);
-//	for (int idx = 0; idx < pNum; idx++) {
-//		if (arr[idx]) {
-//
-//			while (arr[idx]->next) {
-//				//cout << arr[idx]->next->key << " - " << arr[idx]->freq << endl;
-//				master[idx]->nxt.push_back(arr[idx]->next->next);
-//				//master[idx]->next = arr[idx]->next->next;
-//			}
-//			//cout << "Hi";
-//		}
-//
-//	}
-//	return master;
-//}
-
-//Node * Frequency::pop(int index)
-//{
-//	Node*res = popInternal(arr[index]);
-//	return res;
-//	
-//}
-//
-//Node * Frequency::popInternal(Node *& head)
-//{
-//	cout <<"We got this"<< head->value << endl;
-//	if (head->next == NULL) {
-//		cout << "Stuck here!" << endl;
-//		return NULL;
-//	}
-//	else {
-//		Node* res = head->next;
-//		cout << res->key << endl;
-//		head->next = head->next->next;
-//		return res;
-//	}
-//
-//}

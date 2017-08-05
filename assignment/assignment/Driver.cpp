@@ -12,34 +12,21 @@ vector<Node*>makeVector(Frequency obj);
 string wordReShape(string st);
 int wordToInt(string st);
 float wordFrequencyInFile(string word, vector<Node*>file);
-void printVector(vector<Node*>vct);
-void getVectorHeads(Frequency fx, vector<Node*>&vct);
-//void getVectorItems(Frequency fx, vector<Node*>&vct);
+//void printVector(vector<Node*>vct);
 //functions end here
 using namespace std;
 int main() {
 	Frequency f("file.txt");
 	//f.FileOpen("file.txt");
-	vector<Node*>vx(1777);
-	//getVectorHeads(f, vx);
-	//f.copyVectorHeads(vx);
-	//vx = f.getMasterVector();
-	/*for (int x = 0; x < pNum; x++) {
-		if (vx[x]) {
-			cout << vx[x]->value << endl;
-		}
-	}*/
-	//cout<<vx[221]->next->key<<endl;
-	//getVectorItems(f, vx);
-	
-	//cout<< n->next->key<<endl;
-	/*if (vx[221]) {
-		cout << vx[221]->next->key <<endl;
-	}*/
-	
+	//vector<Node*>fl =
+	//cout << fl.size();
+	//printVector(fl);
+	//cout << wordFrequencyInFile("it", fl);
+	//f.~Frequency();
+	//Frequency f2;
+	//f2.FileOpen("file3.txt");
+	//f2.~Frequency();
 
-	//setVectorHeads(f,vx);
-		
 
 	return 0;
 }
@@ -53,7 +40,7 @@ float wordFrequencyInFile(string word, vector<Node*>file) {
 	if (file[num]) {
 		Node*idx = file[num]->next;
 		while (idx) {
-			cout<<idx->key<<endl;
+			cout << idx->key << endl;
 			if (idx->key.compare(wd) == 0) {
 				result = idx->freq;
 				cout << idx->freq << endl;
@@ -105,26 +92,10 @@ void printVector(vector<Node*>vct) {
 
 	}
 }
-vector<Node*>makeVector(Frequency obj) {
-	vector<Node*>vct;
-	/*for (int idx = 0; idx < pNum; idx++) {
-		vct.push_back(obj.getVectorElements(idx));
-	}*/
-	return vct;
-}
-void getVectorHeads(Frequency fx, vector<Node*>&vct) {
-	//for (int idx = 0; idx < pNum; idx++) {
-	//	if (fx.hasArrayItem(idx)) {
-	//		vct[idx]=fx.returnArrayheader(idx);
-	//	}
-	//}
-	fx.copyVectorHeads(vct);
-}
-//void getVectorItems(Frequency fx, vector<Node*>&vct) {
-//	for (int idx = 0; idx < pNum; idx++) {
-//		if (fx.hasArrayItem(idx)) {
-//			vct[idx] = fx.pop(idx);
-//		}
-//	}
+//vector<Node*>makeVector(Frequency obj) {
+//	vector<Node*>vct;
+//	/*for (int idx = 0; idx < pNum; idx++) {
+//	vct.push_back(obj.getVectorElements(idx));
+//	}*/
+//	return vct;
 //}
-//
