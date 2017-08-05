@@ -126,7 +126,7 @@ void Frequency::Freq(string filename, vector<Node*>&vct) {
 				
 			}
 		}
-		printVector(vct);
+		//printVector(vct);
 		//print ends
 	}
 	else {
@@ -163,7 +163,7 @@ int Frequency::wordToInt(string st)
 	result = result % 1777;
 	return result;
 }
-void Frequency::printVector(vector<Node*>vct) {
+void Frequency::printVector() {
 	for (int idx = 0; idx < pNum; idx++) {
 		if (vct[idx]) {
 
@@ -176,7 +176,11 @@ void Frequency::printVector(vector<Node*>vct) {
 
 	}
 }
-Node * Frequency::getVectorElements(int idx)
+
+void Frequency::CloneVector(vector<Node*> &vx)
 {
-	return arr[idx]->next;
+	for (int i = 0; i < pNum; i++) {
+		vx[i] = vct[i];
+	}
+	
 }

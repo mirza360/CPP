@@ -12,16 +12,21 @@ vector<Node*>makeVector(Frequency obj);
 string wordReShape(string st);
 int wordToInt(string st);
 float wordFrequencyInFile(string word, vector<Node*>file);
-//void printVector(vector<Node*>vct);
+void printVector(vector<Node*>vct);
 //functions end here
 using namespace std;
 int main() {
 	Frequency f("file.txt");
+	//f.printVector();
+	vector<Node*>file1(pNum);
+	f.CloneVector(file1);
+	printVector(file1);
 	//f.FileOpen("file.txt");
 	//vector<Node*>fl =
 	//cout << fl.size();
 	//printVector(fl);
-	//cout << wordFrequencyInFile("it", fl);
+	cout << "Finding Word Frequency!" << endl;
+	cout <<"it - "<< wordFrequencyInFile("it", file1);
 	//f.~Frequency();
 	//Frequency f2;
 	//f2.FileOpen("file3.txt");
@@ -38,12 +43,14 @@ float wordFrequencyInFile(string word, vector<Node*>file) {
 	//cout << num << endl;
 	float result = 0.0;
 	if (file[num]) {
+		//cout<<file[num]->value<<endl;
 		Node*idx = file[num]->next;
+		//cout<<idx->key<<endl;
 		while (idx) {
-			cout << idx->key << endl;
+			//cout << idx->key << endl;
 			if (idx->key.compare(wd) == 0) {
 				result = idx->freq;
-				cout << idx->freq << endl;
+				//cout << idx->freq << endl;
 				break;
 			}
 			else {
@@ -80,22 +87,17 @@ int wordToInt(string st) {
 	return result;
 }
 void printVector(vector<Node*>vct) {
+	//cout << "I am up here!" << endl;
 	for (int idx = 0; idx < pNum; idx++) {
 		if (vct[idx]) {
-
-			while (vct[idx]->next) {
-				cout << vct[idx]->next->key << " - " << vct[idx]->freq << endl;
-				vct[idx]->next = vct[idx]->next->next;
+			Node* tmp = vct[idx]->next;
+			while (tmp) {
+				//cout << "Hello" << endl;
+				cout << tmp->key << " - " << tmp->freq << endl;
+				tmp = tmp->next;
 			}
 			//cout << "Hi";
 		}
 
 	}
 }
-//vector<Node*>makeVector(Frequency obj) {
-//	vector<Node*>vct;
-//	/*for (int idx = 0; idx < pNum; idx++) {
-//	vct.push_back(obj.getVectorElements(idx));
-//	}*/
-//	return vct;
-//}

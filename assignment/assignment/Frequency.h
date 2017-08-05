@@ -29,8 +29,8 @@ public:
 	string tokenize(string st);
 	int wordToInt(string st);
 	void Freq(string fileName, vector<Node*>&vct);
-	void printVector(vector<Node*>vct);
-	Node* getVectorElements(int idx);
+	void printVector();
+	void CloneVector(vector<Node*> &vx);
 
 
 
