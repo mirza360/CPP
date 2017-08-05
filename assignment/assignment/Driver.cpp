@@ -21,14 +21,15 @@ int main() {
 	vector<Node*>file1(pNum);
 	f.CloneVector(file1);
 	printVector(file1);
-	//f.FileOpen("file.txt");
-	//vector<Node*>fl =
-	//cout << fl.size();
-	//printVector(fl);
 	cout << "Finding Word Frequency!" << endl;
 	cout <<"it - "<< wordFrequencyInFile("it", file1);
 	//f.~Frequency();
-	//Frequency f2;
+	Frequency f2("file3.txt");
+	vector<Node*> file2(pNum);
+	f2.CloneVector(file2);
+	printVector(file2);
+	cout << "Finding Word Frequency!" << endl;
+	cout << "it - " << wordFrequencyInFile("it", file2);
 	//f2.FileOpen("file3.txt");
 	//f2.~Frequency();
 
