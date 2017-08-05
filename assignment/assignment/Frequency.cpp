@@ -117,14 +117,13 @@ void Frequency::Freq(string filename, vector<Node*>&vct) {
 		for (int i = 0; i < pNum; i++) {
 			//vct.push_back(arr[i]);
 			if (vct[i]) {
-
-				float a = (float)(vct[i]->next->total) / (float)(wCount);
-				//printf("%.4f: ", a);
-				//a = a * 100000;
-				//int dd = (int)a;
-				//a = dd / 10000.0;
-				//a = floor(a * 10000.0) / 10000.0;
-				vct[i]->freq = a;
+				Node* tmp = vct[i]->next;
+				while (tmp) {
+					float a = (float)(tmp->total) / (float)(wCount);
+					tmp->freq = a;
+					tmp = tmp->next;
+				}
+				
 			}
 		}
 		printVector(vct);
@@ -169,7 +168,7 @@ void Frequency::printVector(vector<Node*>vct) {
 		if (vct[idx]) {
 
 			while (vct[idx]->next) {
-				cout << vct[idx]->next->key << " - " << vct[idx]->freq << endl;
+				cout << vct[idx]->next->key << " - " << vct[idx]->next->freq << endl;
 				vct[idx]->next = vct[idx]->next->next;
 			}
 			//cout << "Hi";
