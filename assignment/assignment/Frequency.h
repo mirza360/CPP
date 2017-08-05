@@ -27,6 +27,7 @@ public:
 	~Frequency();
 	void FileOpen(string filename);
 	string tokenize(string st);
+	int wordToInt(string st);
 	vector<Node*> Freq(string fileName);
 	void printVector(vector<Node*>vct);
 	Node* getVectorElements(int idx);

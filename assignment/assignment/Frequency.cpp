@@ -55,21 +55,17 @@ vector<Node*> Frequency::Freq(string filename) {
 		while (myfile >> line) {
 			//cout << line << endl;
 			string st = tokenize(line);
+			int res = wordToInt(st);
 			wCount++;
 			//cout << word<<endl;
 			//testing starts
 
-			int res = 0;
-			for (int idx = 0; idx < (int)st.size(); idx++) {
-				res += (int)st.at(idx);
-			}
-			res = res%pNum;
+
 			//cout << "Key Value: " << res << " ";
 			//conversion to number ends
 			//--create the word node
 			Node *wrd = new Node();
 			wrd->key = st;
-
 			wrd->total++;
 			//-position side node
 			//Node*pos = new Node();
@@ -79,15 +75,19 @@ vector<Node*> Frequency::Freq(string filename) {
 			}
 			//if has table index empty
 			if (!arr[res]->begin) {
+				//float a = (float)wrd->total / (float)wCount;
+
 				arr[res]->value = res;
 				arr[res]->begin = true;
 				arr[res]->next = wrd;
+				
 				//cout << "begin 1" << endl;
 
 			}//if table index already has something
 			else {
 				//checking for duplicate
 				Node *idx = arr[res]->next;
+				Node*tmp = arr[res];
 				bool check = false;//if duplicate found, it will be true
 				while (idx != NULL) {
 					//matching the key
@@ -98,12 +98,13 @@ vector<Node*> Frequency::Freq(string filename) {
 						break;
 					}//if not matched
 					else {
+						tmp = idx;
 						idx = idx->next;
 					}
 				}
 				//if no duplicate found
 				if (check == false) {
-					idx = wrd;
+					tmp->next = wrd;
 				}
 
 			}
@@ -152,6 +153,15 @@ string Frequency::tokenize(string st) {
 	return word;
 
 
+}
+int Frequency::wordToInt(string st)
+{
+	int result = 0;
+	for (int idx = 0; idx < (int)st.size(); idx++) {
+		result = result + (int)st.at(idx);
+	}
+	result = result % 1777;
+	return result;
 }
 void Frequency::printVector(vector<Node*>vct) {
 	for (int idx = 0; idx < pNum; idx++) {
