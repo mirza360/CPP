@@ -16,6 +16,7 @@ struct Node {
 	int total = 0;
 	float freq = 0.0;
 	bool begin = false;
+	
 };
 
 class Frequency {
@@ -26,12 +27,14 @@ public:
 	Frequency(string s);
 	~Frequency();
 	void FileOpen(string filename);
+	bool hasArrayItem(int idx);
+	Node* returnArrayheader(int idx);
 	string tokenize(string st);
 	vector<Node*> Freq(string fileName);
 	void printVector(vector<Node*>vct);
-	Node* getVectorElements(int idx);
-	
-
-	
+	void copyVectorHeads(vector<Node*>&vct);//copies the array header to vector
+	/*Node*pop(int index);
+	Node*popInternal(Node*&head);*/
+	//vector<Node*> getMasterVector();
 
 };
