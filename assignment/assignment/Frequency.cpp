@@ -11,7 +11,7 @@ int sCount = 0;
 int wCount = 0;
 const int pNum = 1777;//the prime number
 Node *arr[1777];
-vector<Node*>hs;
+vector<Node*>vct(1777);
 //end of global variables
 using namespace std;
 Frequency::Frequency(string st) {
@@ -38,15 +38,16 @@ void Frequency::FileOpen(string fileName)
 	//string fileName;
 	//cin >> fileName;
 	//myfile.open("file.txt");
-	vector<Node*>fr = Freq(fileName);
+	//vector<Node*>fr = 
+	Freq(fileName, vct);
 	/*for (int idx = 0; idx <(int) fr.size(); idx++) {
 	hs.push_back(fr[idx]);
 	}*/
 }
 //Function implementation
-vector<Node*> Frequency::Freq(string filename) {
+void Frequency::Freq(string filename, vector<Node*>&vct) {
 	//Node *arr[pNum];
-	vector<Node*>vct;
+	//vector<Node*>vct;
 	string line;
 	//string word="";
 	ifstream myfile;
@@ -59,7 +60,7 @@ vector<Node*> Frequency::Freq(string filename) {
 			wCount++;
 			//cout << word<<endl;
 			//testing starts
-
+			
 
 			//cout << "Key Value: " << res << " ";
 			//conversion to number ends
@@ -70,24 +71,24 @@ vector<Node*> Frequency::Freq(string filename) {
 			//-position side node
 			//Node*pos = new Node();
 			//pos->pos = wCount;
-			if (arr[res] == NULL) {
-				arr[res] = new Node();
+			if (vct[res] == NULL) {
+				vct[res] = new Node();
 			}
 			//if has table index empty
-			if (!arr[res]->begin) {
+			if (!vct[res]->begin) {
 				//float a = (float)wrd->total / (float)wCount;
 
-				arr[res]->value = res;
-				arr[res]->begin = true;
-				arr[res]->next = wrd;
+				vct[res]->value = res;
+				vct[res]->begin = true;
+				vct[res]->next = wrd;
 				
 				//cout << "begin 1" << endl;
 
 			}//if table index already has something
 			else {
 				//checking for duplicate
-				Node *idx = arr[res]->next;
-				Node*tmp = arr[res];
+				Node *idx = vct[res]->next;
+				Node*tmp = vct[res];
 				bool check = false;//if duplicate found, it will be true
 				while (idx != NULL) {
 					//matching the key
@@ -114,8 +115,8 @@ vector<Node*> Frequency::Freq(string filename) {
 		//print here
 
 		for (int i = 0; i < pNum; i++) {
-			vct.push_back(arr[i]);
-			if (arr[i]) {
+			//vct.push_back(arr[i]);
+			if (vct[i]) {
 
 				float a = (float)(vct[i]->next->total) / (float)(wCount);
 				//printf("%.4f: ", a);
@@ -133,7 +134,7 @@ vector<Node*> Frequency::Freq(string filename) {
 		cout << "Unable to open";
 
 	}
-	return vct;
+	//return vct;
 }
 string Frequency::tokenize(string st) {
 
