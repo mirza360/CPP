@@ -41,15 +41,15 @@ int main(int argc, char *argv[]) {
 	vector<vector<Node*>>fileHash;
 	for (int idx = 1; idx < argc; idx++) {
 		string fileName=argv[idx];
-		cout << fileName << endl;
-		Sleep(1000);
+		//cout << fileName << endl;
+		//Sleep(1000);
 		Frequency f(fileName);
 		fileObject.push_back(f);
 		vector<Node*>fileH(pNum);
 		f.CloneVector(fileH);
 		fileHash.push_back(fileH);
-		printVector(fileHash[idx-1]);
-		Sleep(1000);
+		//printVector(fileHash[idx-1]);
+		//Sleep(1000);
 	}
 
 	//Vector to store objects
@@ -405,12 +405,12 @@ vector < vector<float>> createMatrix(vector<vector<Node*>>fileHash) {
 		for (int c = 0; c < height; c++) {
 			if (c == r) {
 				row.push_back(0.0);
-				cout << 0.0;
+				//cout << 0.0;
 			}
 			else if(c<r){
 				//taking advantage of symmetricity
 				row.push_back(col[c][r]);
-				cout << col[c][r];
+				//cout << col[c][r];
 			}
 			else if(c>r){
 				//do the distance operations
@@ -421,11 +421,11 @@ vector < vector<float>> createMatrix(vector<vector<Node*>>fileHash) {
 				vector<float> v2 = frequencyVector(CombList, fileHash[r]);
 				//finding distance
 				float dist = distance(v1, v2);
-				cout << dist;
+				//cout << dist;
 				row.push_back(dist);
 			}
 		}
-		cout << endl;
+		///cout << endl;
 		col.push_back(row);
 	}
 

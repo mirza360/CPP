@@ -181,10 +181,7 @@ void Frequency::CloneVector(vector<Node*> &vx)
 {
 	for (int i = 0; i < pNum; i++) {
 		vx[i] = vct[i];
-	}
-	for (int i = 0; i < pNum; i++) {
 		vct[i] = NULL;
 		arr[i] = NULL;
 	}
-	
 }
