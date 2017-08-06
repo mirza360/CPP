@@ -1,36 +1,34 @@
-// VectorTest.cpp : Defines the entry point for the console application.
-//
-
-#include "stdafx.h"
-#include<vector>
+//============================================================================
+// Name        : test.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+#include"stdafx.h"
 #include<iostream>
-
+#include<fstream>
+#include<string>
+#include <cctype>
+#include<vector>
 using namespace std;
 
-struct Node {
-	int value;
-	Node*next = NULL;
-};
-vector <Node*> pmix();
-int main()
-{
-	//Node*arra1[50];
-	vector<Node*>arr=pmix();
-	//arr.push_back(arra1);
-	for (int idx = 0; idx < arr.size(); idx++) {
-		cout << arr[idx]->value << endl;
+
+int main(int argc, char *argv[]) {
+	string line;
+	//string word="";
+	ifstream myfile;
+	string st = argv[0];
+	myfile.open(st);
+	if (myfile) {
+		while (myfile >> line) {
+			//cout << line << endl;
+			cout << line << endl;
+		}
+	}
+	else {
+		cout << "Couldn't open the file!" << endl;
 	}
 
-    return 0;
+	return 0;
 }
-vector<Node*> pmix() {
-	Node* arr[10];
-	vector<Node*> v;
-	for (int i = 0; i < 10; i++) {
-		arr[i] = new Node();
-		arr[i]->value = i*(i + 5);
-		v.push_back(arr[i]);
-	}
-	return v;
-}
-

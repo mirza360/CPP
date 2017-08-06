@@ -19,6 +19,7 @@ vector<string> combinedList(vector<Node*>f1, vector<Node*>v2);
 vector<float> frequencyVector(vector<string> list, vector<Node*>file);
 float EuclideanDistance(vector<float> v1, vector<float> v2);
 float distance(vector<float> v1, vector<float> v2);
+void printList(vector<string>list);
 //functions end here
 using namespace std;
 int main() {
@@ -53,6 +54,7 @@ int main() {
 	float dist=distance(v1, v2);
 	cout << "----------++++++++++++-------------" << endl;
 	cout << dist << endl;
+	printList(WordList);
 	return 0;
 }
 float wordFrequencyInFile(string word, vector<Node*>file) {
@@ -158,8 +160,6 @@ vector<string> combinedList(vector<Node*>f1, vector<Node*>f2) {
 	}
 
 	return result;
-
-
 }
 vector<float> frequencyVector(vector<string> list, vector<Node*>file) {
 	vector<float>res;
@@ -182,4 +182,12 @@ float distance(vector<float> v1, vector<float> v2) {
 	float tmp = 1 / (float)v1.size();
 	result = tmp*EuclideanDistance(v1, v2);
 	return result;
+}
+void printList(vector<string>list) {
+	cout << "Printing List of Words: " << endl;
+	if ((int)list.size()>0) {
+		for (int idx = 0; idx < (int)list.size(); idx++) {
+			cout << list[idx] << endl;
+		}
+	}
 }
