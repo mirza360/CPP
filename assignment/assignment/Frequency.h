@@ -32,7 +32,4 @@ public:
 	void printVector();
 	void CloneVector(vector<Node*> &vx);
 
-
-
-
 };
