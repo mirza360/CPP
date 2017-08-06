@@ -10,6 +10,7 @@
 //Global Variables
 const int pNum = 1777;
 //functions start here
+void FileDriver(vector<string> fileList, vector<Frequency>&fileVector);
 vector<Node*>makeVector(Frequency obj);
 string wordReShape(string st);
 int wordToInt(string st);
@@ -22,13 +23,35 @@ float distance(vector<float> v1, vector<float> v2);
 void printList(vector<string>list);
 //functions end here
 using namespace std;
-int main() {
+int main(int argc, char *argv[]) {
 	cout << fixed;
+	vector<string>fileList;
+	for (int idx = 1; idx < argc; idx++) {
+		fileList.push_back(argv[idx]);
+	}
+	//Vector to store objects
+	vector<Frequency>fileVector;
+	FileDriver(fileList, fileVector);
+	//operations for each file
+	vector<vector<Node*>>fileHash((int)fileVector.size());
+	for (int idx = 0; idx < (int)fileVector.size(); idx++) {
+		vector<Node*>fileH(pNum);
+		fileVector[idx].CloneVector(fileH);
+		fileHash[idx] = fileH;
+	}
+	//fileVector beholds the objects
+	//fileHash beholds the hash table for the respective object
+	//info stored according to vector index
+	//Code Starts here
+	printVector(fileHash[0]);
+
+	//Code Ends here
+	/*
 	//File # 1
 	Frequency f("file.txt");
 	vector<Node*>file1(pNum);
 	f.CloneVector(file1);
-	printVector(file1);
+	//printVector(file1);
 	cout << "Finding Word Frequency!" << endl;
 	cout <<"it - "<< wordFrequencyInFile("it", file1);
 	//File # 2
@@ -38,24 +61,31 @@ int main() {
 	printVector(file2);
 	cout << "Finding Word Frequency!" << endl;
 	cout << "it - " << wordFrequencyInFile("it", file2);
+	*/
 	//CombinedList
-	vector<string>WordList = combinedList(file1, file2);
+	//vector<string>WordList = combinedList(file1, file2);
 	//cout << "Combined List is Here----------" << endl;
 	/*for (int id = 0; id < (int)WordList.size(); id++) {
 		cout << WordList[id] << endl;
 	}*/
 	//End of Combined List
 	//frequency Vector
-	vector<float> v1 = frequencyVector(WordList, file1);
+	/*vector<float> v1 = frequencyVector(WordList, file1);
 	vector<float> v2 = frequencyVector(WordList, file2);
-	/*for (int id = 0; id < (int)v1.size(); id++) {
-		cout << v1[id] << endl;
-	}*/
-	float dist=distance(v1, v2);
+	*/
+	/*float dist=distance(v1, v2);
 	cout << "----------++++++++++++-------------" << endl;
 	cout << dist << endl;
 	printList(WordList);
+
+	*/
 	return 0;
+}
+void FileDriver(vector<string> fileList, vector<Frequency>&fileVector) {
+	for (int idx = 0; idx < (int)fileList.size(); idx++) {
+		Frequency f(fileList[idx]);
+		fileVector.push_back(f);
+	}
 }
 float wordFrequencyInFile(string word, vector<Node*>file) {
 	string wd = wordReShape(word);
