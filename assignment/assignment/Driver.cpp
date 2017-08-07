@@ -25,6 +25,7 @@ float distance(vector<float> v1, vector<float> v2);
 void printList(vector<string>list);
 vector < vector<float>> createMatrix(vector<vector<Node*>>fileHash);
 void printMatrix(vector < vector<float>>mat);
+void createHtml(vector < vector<float>>mat, vector<string>AllFiles);
 //functions end here
 using namespace std;
 int main(int argc, char *argv[]) {
@@ -39,11 +40,13 @@ int main(int argc, char *argv[]) {
 
 	vector<Frequency>fileObject;
 	vector<vector<Node*>>fileHash;
+	vector<string>AllFiles;
 	for (int idx = 1; idx < argc; idx++) {
 		string fileName=argv[idx];
 		//cout << fileName << endl;
 		//Sleep(1000);
 		Frequency f(fileName);
+		AllFiles.push_back(fileName);
 		fileObject.push_back(f);
 		vector<Node*>fileH(pNum);
 		f.CloneVector(fileH);
@@ -194,6 +197,23 @@ int main(int argc, char *argv[]) {
 					printMatrix(mat);
 				}
 				cout << endl;
+			}break;
+			case 6: {
+				cout << "Creating the Matrix: " << endl;
+				vector < vector<float>>mat = createMatrix(fileHash);
+				cout << "If you want to print the Whole Matrix enter 1" << endl;
+				cout << "Enter 2 to generate HTML File" << endl;
+				int op = 0;
+				cin >> op;
+				if (op == 1) {
+					printMatrix(mat);
+				}
+				else if (op == 2) {
+					cout << "Printing the HTML File " << endl;
+					Sleep(1000);
+					createHtml(mat, AllFiles);
+				}
+				
 			}break;
 			default: {
 			}break;
@@ -446,4 +466,80 @@ void printMatrix(vector < vector<float>>mat) {
 		cout << "----------------------------";
 		cout << endl;
 	}
+}
+void createHtml(vector < vector<float>>mat, vector<string>AllFiles) {
+	cout << "<!doctype html>" << endl;
+	cout << "<html>" << endl;
+	cout << "<head>" << endl;
+	cout << "<title>Network | Basic usage</title>" << endl;
+
+	cout << "	<script type = \"text/javascript\" src = \"../../dist/vis.js\"></script>" << endl;
+	cout << "<link href = \"../../dist/vis-network.min.css\" rel = \"stylesheet\" type = \"text/css\" />" << endl;
+
+	cout << "	<style type = \"text/css\">" << endl;
+	cout<<	"#mynetwork{" << endl;
+	cout<<"width: 600px;" << endl;
+	cout<<"height: 400px;" << endl;
+	cout<<"border: 1px solid lightgray;"<< endl;
+	cout<<"}" << endl;
+	cout<<	"</style>" << endl;
+	cout<<	"</head>" << endl;
+	cout<<"	<body>" << endl;
+
+	cout << "	<p>" << endl;
+	cout<<"	Create a simple network with some nodes and edges." << endl;
+	cout<<	"</p>" << endl;
+
+	cout<<	"<div id = \"mynetwork\"></div>" << endl;
+
+	cout<<"	<script type = \"text/javascript\">" << endl;
+		// create an array with nodes
+	cout<<"	var nodes = new vis.DataSet([" << endl;
+	for (int idx = 0; idx <(int) mat.size(); idx++) {
+		cout << "{id: " << idx + 1 << ", label : " << "\'" << AllFiles[idx] << "\' }," << endl;
+	}
+	
+	/*
+	{id: 1, label : 'Node 1'},
+	{ id: 2, label : 'Node 2' },
+	{ id: 3, label : 'Node 3' },
+	{ id: 4, label : 'Node 4' },
+	{ id: 5, label : 'Node 5' }
+	*/
+	cout<<"	]);" << endl;
+
+	// create an array with edges
+	cout<<"var edges = new vis.DataSet([" << endl;
+	for (int i = 0; i < (int)mat.size(); i++) {
+		for (int j = i; j < (int)mat.size(); j++) {
+			if (!(i == j)) {
+				cout << "{from : " << i+1 << ", label : "<<mat[i][j]<<", to : " << j+1 << "}," << endl;
+			}
+		}
+		
+	}
+	/*{from: 1, to : 3},
+	{ from: 1, to : 2 },
+	{ from: 2, to : 5 },
+	{ from: 2,  label : 0.2313, to : 4 },
+	{ from: 3, to : 5 },
+	{ from: 2, to : 5 },
+	{ from: 3, to : 3 }
+	*/
+	cout<<"]);" << endl;
+
+	// create a network
+	cout<<"var container = document.getElementById('mynetwork');" << endl;
+	cout<<"var data = {" << endl;
+	cout<<"nodes: nodes," << endl;
+	cout<<"	   edges : edges" << endl;
+	cout<<"};" << endl;
+	cout<<"var options = {};" << endl;
+	cout<<"var network = new vis.Network(container, data, options);" << endl;
+	cout<<"</script>" << endl;
+
+
+	cout<<"	</body>" << endl;
+	cout<<"	</html>" << endl;
+
 }
