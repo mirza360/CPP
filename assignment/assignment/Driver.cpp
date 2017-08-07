@@ -87,7 +87,9 @@ int main(int argc, char *argv[]) {
 
 	while (true)
 	{
-		cout << "\nPlease Select which task you want to complete or enter 7 to exit!";
+		cout << "\nEnter corresponding number to perform task\n";
+		cout << "To perform the bonus task enter 6\n";
+		cout << "Enter any other key to exit!\n";
 		int task = 0;
 		cin >> task;
 		if (task>0 && task<7)
@@ -471,10 +473,10 @@ void createHtml(vector < vector<float>>mat, vector<string>AllFiles) {
 	cout << "<!doctype html>" << endl;
 	cout << "<html>" << endl;
 	cout << "<head>" << endl;
-	cout << "<title>Network | Basic usage</title>" << endl;
+	cout << "<title>Visual Rendering of the Graph</title>" << endl;
 
-	cout << "	<script type = \"text/javascript\" src = \"../../dist/vis.js\"></script>" << endl;
-	cout << "<link href = \"../../dist/vis-network.min.css\" rel = \"stylesheet\" type = \"text/css\" />" << endl;
+	cout << "	<script type = \"text/javascript\" src = \"http://visjs.org/dist/vis.js\"></script>" << endl;
+	cout << "<link href = \"http://visjs.org/dist/vis-network.min.css\" rel = \"stylesheet\" type = \"text/css\" />" << endl;
 
 	cout << "	<style type = \"text/css\">" << endl;
 	cout<<	"#mynetwork{" << endl;
@@ -487,7 +489,7 @@ void createHtml(vector < vector<float>>mat, vector<string>AllFiles) {
 	cout<<"	<body>" << endl;
 
 	cout << "	<p>" << endl;
-	cout<<"	Create a simple network with some nodes and edges." << endl;
+	cout<<"	A simple network with file nodes and their distances." << endl;
 	cout<<	"</p>" << endl;
 
 	cout<<	"<div id = \"mynetwork\"></div>" << endl;
