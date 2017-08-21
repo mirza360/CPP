@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{B34E6C41-0CB3-40FD-A8EE-45D9640E8419}</ProjectGuid>
+    <ProjectGuid>{3EB7364D-C756-4964-BF4B-03ADF615DA0E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>lab15</RootNamespace>
+    <RootNamespace>Lab16</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -145,11 +145,17 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="graphtype.h" />
+    <ClInclude Include="quetype.h" />
+    <ClInclude Include="stacktype.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="graphtype.cpp" />
+    <ClCompile Include="Lab16.cpp" />
+    <ClCompile Include="quetype.cpp" />
+    <ClCompile Include="stacktype.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

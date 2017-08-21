@@ -14,6 +14,7 @@ Node* insert(int v,Node *root);
 void printInOrder(Node*root);
 int findHeight(Node *tree);
 int maxNum(int x, int y);
+void BFS(Node*tree, int val);
 //void findGCD(int x);
 int main()
 {
@@ -24,8 +25,11 @@ int main()
 	root = insert(200 ,root);
 	root = insert(150 , root);
 	root = insert(300 , root);
-	printInOrder(root);
-	cout<<findHeight(root);
+	//printInOrder(root);
+	//cout<<findHeight(root);
+	//cout<<BFS(root, 50);
+	BFS(root, 50);
+	BFS(root, 200);
 	return 0;
 }
 Node* insert(int v, Node *tree) {
@@ -67,5 +71,18 @@ int maxNum(int x, int y) {
 	}
 	else {
 		return x;
+	}
+}
+void BFS(Node*tree, int val) {
+	//bool check = false;
+	if (tree) {
+		if (tree->value == val) {
+			cout << "Found " << val << endl;
+			//check = true;
+		}
+		else {
+			BFS(tree->left,val);
+			BFS(tree->right, val);
+		}
 	}
 }

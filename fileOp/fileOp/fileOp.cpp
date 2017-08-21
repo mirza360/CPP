@@ -15,6 +15,11 @@ struct Node {
 	string key="";
 	
 };
+//for the occurence linked lis
+struct Occ {
+	Occ*next = NULL;
+	int pos = 0;
+};
 //For the linked list of words
 struct Link {
 	string wrd = "";
@@ -25,11 +30,7 @@ struct Link {
 };
 Link *head = NULL;
 //Structure related global variables
-//for the occurence linked lis
-struct Occ {
-	Occ*next = NULL;
-	int pos = 0;
-};
+
 
 //Functions area
 string tokenize(string st);

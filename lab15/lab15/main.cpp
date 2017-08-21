@@ -18,7 +18,8 @@ int main()
 	cout << " n =";
 	int n;
 	cin >> n;
-	cout << series(n);
+	cout << series(n)<< endl;
+	cout << fib(n) << endl;
     return 0;
 }
 int fib(int n) {
