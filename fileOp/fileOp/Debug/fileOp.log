@@ -1,4 +1,0 @@
-﻿  fileOp.cpp
-c:\users\mirza\documents\github\cpp\fileop\fileop\fileop.cpp(47): warning C4101: 'arr': unreferenced local variable
-  fileOp.vcxproj -> C:\Users\Mirza\Documents\GitHub\CPP\fileOp\Debug\fileOp.exe
-  fileOp.vcxproj -> C:\Users\Mirza\Documents\GitHub\CPP\fileOp\Debug\fileOp.pdb (Partial PDB)
